@@ -53,15 +53,19 @@
 }
 
 .kpi-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 20px;
-    transition: all 0.2s ease;
+    background: linear-gradient(180deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 22px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
+    position: relative;
+    overflow: hidden;
 }
+
 
 .kpi-card:hover {
     border-color: var(--card-hover-border);
@@ -69,28 +73,46 @@
 }
 
 .kpi-icon-wrap {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1f2937;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.kpi-icon-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    opacity: 0.15;
+    border-radius: inherit;
+}
+
+.kpi-icon-wrap>svg {
+    position: relative;
+    z-index: 2;
 }
 
 .kpi-val {
-    font-size: 1.125rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 800;
     color: var(--text-main);
     display: block;
+    letter-spacing: -0.02em;
 }
 
 .kpi-lab {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    display: block;
 }
 
 /* Moliyaviy Dinamika Section */
@@ -250,23 +272,51 @@
 
 /* AI INSIGHT - Clean & Focused */
 .ai-insight-modern {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(17, 24, 39, 1) 100%);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    border-radius: 18px;
-    padding: 20px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(17, 24, 39, 1) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px;
     display: flex;
     gap: 16px;
+    position: relative;
+    overflow: hidden;
 }
 
+.ai-insight-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+    animation: edge-shimmer 6s infinite ease-in-out;
+}
+
+@keyframes edge-shimmer {
+    0% {
+        left: -100%
+    }
+
+    20%,
+    100% {
+        left: 200%
+    }
+}
+
+
 .ai-icon-circle {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: var(--accent-primary);
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: rgba(16, 185, 129, 0.2);
+    box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #111827;
+    color: var(--accent-primary);
+    flex-shrink: 0;
 }
 
 .ai-content-modern h4 {
@@ -279,10 +329,11 @@
 }
 
 .ai-content-modern p {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: white;
-    line-height: 1.4;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #e5e7eb;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
 }
 
 /* ADMIN STYLES */
