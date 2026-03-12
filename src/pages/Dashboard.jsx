@@ -28,10 +28,19 @@ export default function Dashboard({ user }) {
     if (user.role === 'admin') {
         return (
             <div className="page dashboard-page">
-                <header className="dash-header">
-                    <div>
-                        <h1 className="elite-title">Tizim Ma'lumotlari</h1>
-                        <p className="elite-subtitle">Admin Console • {adminStats.uptime}</p>
+                <header className="premium-header">
+                    <div className="header-left">
+                        <div className="title-area">
+                            <h1 className="premium-title">Tizim Ma'lumotlari</h1>
+                            <div className="live-badge">
+                                <span className="dot"></span>
+                                SYSTEM UP
+                            </div>
+                        </div>
+                        <p className="premium-subtitle">
+                            <Settings2 size={14} className="icon-emerald" />
+                            <span>BNBM PRO • Admin Console • {adminStats.uptime}</span>
+                        </p>
                     </div>
                 </header>
 
@@ -91,17 +100,20 @@ export default function Dashboard({ user }) {
     // Director & Seller Dashboard View
     return (
         <div className="page dashboard-page">
-            <header className="dash-header">
-                <div>
-                    <h1 className="elite-title">Boshqaruv Paneli</h1>
-                    <p className="elite-subtitle">
-                        <ShieldCheck size={14} className="text-emerald-500" />
-                        <span>BuildTrack Pro • {user.role.toUpperCase()}</span>
+            <header className="premium-header">
+                <div className="header-left">
+                    <h1 className="header-title">Boshqaruv Paneli</h1>
+                    <p className="header-subtitle">
+                        <ShieldCheck size={14} className="icon-emerald" />
+                        <span>BNBM PRO • {user.role.toUpperCase()}</span>
                     </p>
                 </div>
-                <div className="flex gap-3">
-                    <button className="icon-btn" style={{ background: '#1f2937', color: '#9ca3af', border: 'none', borderRadius: '12px', width: '40px', height: '40px' }}><Bell size={20} /></button>
-                    <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center text-emerald-500 border border-gray-700">
+                <div className="header-right">
+                    <button className="icon-action-btn">
+                        <Bell size={20} />
+                        <span className="dot-alert"></span>
+                    </button>
+                    <div className="user-avatar-trigger" onClick={() => navigate('/settings')}>
                         <UserCircle size={24} />
                     </div>
                 </div>
@@ -127,54 +139,81 @@ export default function Dashboard({ user }) {
             </div>
 
             {/* Core Metrics Grid */}
-            <div className="kpi-grid-premium">
-                <div className="kpi-card-premium" onClick={() => navigate('/reports')}>
-                    <div className="kpi-card-inner">
+            <div className="stats-main-grid">
+                {/* Total Sales */}
+                <div className="stats-card-base" onClick={() => navigate('/reports')}>
+                    <div className="stats-card-content">
                         <div className="kpi-card-header">
-                            <span className="kpi-card-label">Umumiy Sotuv</span>
-                            <div className="kpi-icon-box blue"><Search size={16} /></div>
+                            <span className="stats-card-title">Umumiy Sotuv</span>
+                            <div className="kpi-icon-box blue"><Search size={18} /></div>
                         </div>
-                        <span className="kpi-card-value text-white">{formatMoney(monthlyStats.totalSales)}</span>
-                        <div className="kpi-progress">
-                            <div className="kpi-progress-bar blue" style={{ width: '70%' }}></div>
+                        <div className="kpi-body">
+                            <div className="stats-card-value">2.5</div>
+                            <div className="kpi-value-unit">mlrd so'm</div>
+                        </div>
+                        <div className="kpi-footer-area">
+                            <div className="kpi-mini-bar">
+                                <div className="kpi-mini-bar-fill blue" style={{ width: '75%' }}></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="kpi-card-premium" onClick={() => navigate('/reports')}>
-                    <div className="kpi-card-inner">
+                {/* Daily Sales */}
+                <div className="stats-card-base" onClick={() => navigate('/reports')}>
+                    <div className="stats-card-content">
                         <div className="kpi-card-header">
-                            <span className="kpi-card-label">Bugungi Savdo</span>
-                            <div className="kpi-icon-box emerald"><Target size={16} /></div>
+                            <span className="stats-card-title">Bugungi Savdo</span>
+                            <div className="kpi-icon-box emerald"><Target size={18} /></div>
                         </div>
-                        <span className="kpi-card-value text-white">{formatMoney(monthlyStats.todaySales)}</span>
-                        <div className="kpi-trend emerald">
-                            <TrendingUp size={12} />
-                            <span>+12% kechagidan</span>
+                        <div className="kpi-body">
+                            <div className="stats-card-value">46</div>
+                            <div className="kpi-value-unit">mln so'm</div>
+                        </div>
+                        <div className="kpi-footer-area">
+                            <div className="kpi-trend-badge up">
+                                <TrendingUp size={14} />
+                                <span style={{ marginLeft: '4px' }}>+12.5%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="kpi-card-premium" onClick={() => navigate('/debts')}>
-                    <div className="kpi-card-inner">
+                {/* Total Debts */}
+                <div className="stats-card-base" onClick={() => navigate('/debts')}>
+                    <div className="stats-card-content">
                         <div className="kpi-card-header">
-                            <span className="kpi-card-label">Jami Qarzlar</span>
-                            <div className="kpi-icon-box orange"><Layers size={16} /></div>
+                            <span className="stats-card-title">Jami Qarzlar</span>
+                            <div className="kpi-icon-box orange"><Layers size={18} /></div>
                         </div>
-                        <span className="kpi-card-value text-white">{formatMoney(monthlyStats.totalDebt)}</span>
+                        <div className="kpi-body">
+                            <div className="stats-card-value">668</div>
+                            <div className="kpi-value-unit">mln so'm</div>
+                        </div>
+                        <div className="kpi-footer-area">
+                            <div className="kpi-mini-bar">
+                                <div className="kpi-mini-bar-fill orange" style={{ width: '60%' }}></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="kpi-card-premium" onClick={() => navigate('/debts')}>
-                    <div className="kpi-card-inner">
+                {/* Overdue */}
+                <div className="stats-card-base" onClick={() => navigate('/debts')}>
+                    <div className="stats-card-content">
                         <div className="kpi-card-header">
-                            <span className="kpi-card-label">Muddati O'tgan</span>
-                            <div className="kpi-icon-box red"><ShieldAlert size={16} /></div>
+                            <span className="stats-card-title">Muddati O'tgan</span>
+                            <div className="kpi-icon-box red"><ShieldAlert size={18} /></div>
                         </div>
-                        <span className="kpi-card-value text-red">{formatMoney(monthlyStats.overdueDebt)}</span>
-                        <div className="kpi-trend red">
-                            <AlertTriangle size={12} />
-                            <span>Qattiq nazorat</span>
+                        <div className="kpi-body">
+                            <div className="stats-card-value">375</div>
+                            <div className="kpi-value-unit">mln so'm</div>
+                        </div>
+                        <div className="kpi-footer-area">
+                            <div className="kpi-trend-badge down">
+                                <TrendingDown size={14} />
+                                <span style={{ marginLeft: '4px' }}>QATTIQ NAZORAT</span>
+                            </div>
                         </div>
                     </div>
                 </div>
