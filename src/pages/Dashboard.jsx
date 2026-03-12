@@ -37,32 +37,32 @@ export default function Dashboard({ user }) {
 
                 <div className="stats-grid-modern">
                     <div className="kpi-card">
-                        <div className="kpi-icon-wrap text-blue-500"><Cpu size={18} /></div>
-                        <div>
+                        <div className="kpi-header-modern">
+                            <div className="kpi-icon-wrap text-blue-400"><Cpu size={18} /></div>
                             <span className="kpi-lab">Server Yuklanishi</span>
-                            <span className="kpi-val">{adminStats.serverLoad}</span>
                         </div>
+                        <span className="kpi-val">{adminStats.serverLoad}</span>
                     </div>
                     <div className="kpi-card">
-                        <div className="kpi-icon-wrap text-emerald-500"><HardDrive size={18} /></div>
-                        <div>
+                        <div className="kpi-header-modern">
+                            <div className="kpi-icon-wrap text-emerald-400"><HardDrive size={18} /></div>
                             <span className="kpi-lab">Baza Hajmi</span>
-                            <span className="kpi-val">{adminStats.databaseSize}</span>
                         </div>
+                        <span className="kpi-val">{adminStats.databaseSize}</span>
                     </div>
                     <div className="kpi-card">
-                        <div className="kpi-icon-wrap text-purple-500"><Users size={18} /></div>
-                        <div>
+                        <div className="kpi-header-modern">
+                            <div className="kpi-icon-wrap text-purple-400"><Users size={18} /></div>
                             <span className="kpi-lab">Faol Foydalanuvchilar</span>
-                            <span className="kpi-val">{adminStats.activeUsers}</span>
                         </div>
+                        <span className="kpi-val">{adminStats.activeUsers}</span>
                     </div>
                     <div className="kpi-card">
-                        <div className="kpi-icon-wrap text-orange-500"><ShieldAlert size={18} /></div>
-                        <div>
+                        <div className="kpi-header-modern">
+                            <div className="kpi-icon-wrap text-orange-400"><ShieldAlert size={18} /></div>
                             <span className="kpi-lab">Xavfsizlik</span>
-                            <span className="kpi-val text-emerald-500">Normal</span>
                         </div>
+                        <span className="kpi-val text-emerald-400">Normal</span>
                     </div>
                 </div>
 
@@ -121,32 +121,32 @@ export default function Dashboard({ user }) {
             {/* Core Metrics Grid */}
             <div className="stats-grid-modern">
                 <div className="kpi-card" onClick={() => navigate('/reports')} style={{ cursor: 'pointer' }}>
-                    <div className="kpi-icon-wrap text-emerald-500"><Search size={18} /></div>
-                    <div>
+                    <div className="kpi-header-modern">
+                        <div className="kpi-icon-wrap text-blue-400 bg-blue-500/10"><Search size={18} /></div>
                         <span className="kpi-lab">Umumiy Sotuv</span>
-                        <span className="kpi-val">{formatMoney(monthlyStats.totalSales)}</span>
                     </div>
+                    <span className="kpi-val">{formatMoney(monthlyStats.totalSales)}</span>
                 </div>
                 <div className="kpi-card" onClick={() => navigate('/reports')} style={{ cursor: 'pointer' }}>
-                    <div className="kpi-icon-wrap text-blue-500"><Target size={18} /></div>
-                    <div>
+                    <div className="kpi-header-modern">
+                        <div className="kpi-icon-wrap text-emerald-400 bg-emerald-500/10"><Target size={18} /></div>
                         <span className="kpi-lab">Bugungi Savdo</span>
-                        <span className="kpi-val">{formatMoney(monthlyStats.todaySales)}</span>
                     </div>
+                    <span className="kpi-val">{formatMoney(monthlyStats.todaySales)}</span>
                 </div>
                 <div className="kpi-card" onClick={() => navigate('/debts')} style={{ cursor: 'pointer' }}>
-                    <div className="kpi-icon-wrap text-orange-500"><Layers size={18} /></div>
-                    <div>
+                    <div className="kpi-header-modern">
+                        <div className="kpi-icon-wrap text-orange-400 bg-orange-500/10"><Layers size={18} /></div>
                         <span className="kpi-lab">Jami Qarzlar</span>
-                        <span className="kpi-val">{formatMoney(monthlyStats.totalDebt)}</span>
                     </div>
+                    <span className="kpi-val">{formatMoney(monthlyStats.totalDebt)}</span>
                 </div>
                 <div className="kpi-card" onClick={() => navigate('/debts')} style={{ cursor: 'pointer' }}>
-                    <div className="kpi-icon-wrap text-red-500"><ShieldAlert size={18} /></div>
-                    <div>
+                    <div className="kpi-header-modern">
+                        <div className="kpi-icon-wrap text-red-400 bg-red-500/10"><ShieldAlert size={18} /></div>
                         <span className="kpi-lab">Muddati O'tgan</span>
-                        <span className="kpi-val text-red-500">{formatMoney(monthlyStats.overdueDebt)}</span>
                     </div>
+                    <span className="kpi-val text-red-500">{formatMoney(monthlyStats.overdueDebt)}</span>
                 </div>
             </div>
 
