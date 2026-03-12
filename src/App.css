@@ -1,0 +1,28 @@
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 90px;
+  /* Space for BottomNav */
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide scrollbar for cleaner look but keep functionality */
+.app-content::-webkit-scrollbar {
+  display: none;
+}
+
+.app-content {
+  scrollbar-width: none;
+}

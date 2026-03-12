@@ -1,0 +1,280 @@
+.clients-page {
+    padding-top: 16px;
+}
+
+.clients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.client-card {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.client-card-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.client-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.client-meta {
+    display: flex;
+    gap: 12px;
+}
+
+.client-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+}
+
+.btn-sale {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-glass);
+    color: var(--accent-primary);
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.client-card-stats {
+    display: flex;
+    border-top: 1px solid var(--border-glass);
+    padding-top: 12px;
+    gap: 24px;
+}
+
+.client-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.client-stat .label {
+    font-size: 0.6875rem;
+    color: var(--text-tertiary);
+    margin-bottom: 2px;
+}
+
+.client-stat .value {
+    font-size: 0.9375rem;
+    font-weight: 700;
+}
+
+.client-stat .value.debt {
+    color: var(--danger);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 380px;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    padding: 24px;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Receipt Preview */
+.receipt-preview {
+    background: white;
+    color: #1a1a1a;
+    border-radius: 16px;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    margin-bottom: 24px;
+    background-image: radial-gradient(#eee 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.receipt-logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+}
+
+.receipt-logo span {
+    color: #00d4aa;
+}
+
+.receipt-header p {
+    font-size: 0.75rem;
+    margin: 2px 0;
+    color: #666;
+}
+
+.receipt-items {
+    margin-bottom: 16px;
+}
+
+.receipt-item-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+}
+
+.receipt-summary {
+    border-top: 1px dashed #ccc;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.summary-row.highlight {
+    color: #22c55e;
+}
+
+.summary-row.debt {
+    color: #ef4444;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.reminder-box {
+    margin-top: 16px;
+    padding: 10px;
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    border-radius: 8px;
+    color: #c53030;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.telegram-hint {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+}
+
+.send-tg-btn {
+    width: 100%;
+    padding: 16px;
+    gap: 10px;
+    background: #0088cc !important;
+    /* Telegram Blue */
+}
+
+.send-tg-btn.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* Success View */
+.success-view {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    animation: glow 2s infinite;
+}
+
+.success-view h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.success-view p {
+    color: var(--text-secondary);
+}

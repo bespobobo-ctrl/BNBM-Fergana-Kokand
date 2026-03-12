@@ -1,0 +1,65 @@
+.reports-page {
+    padding-top: 16px;
+}
+
+.reports-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+.coming-soon {
+    padding: 40px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.cs-icon {
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 212, 170, 0.1);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.coming-soon h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.coming-soon p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.cs-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.cs-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.cs-feature svg {
+    color: var(--accent-primary);
+}
