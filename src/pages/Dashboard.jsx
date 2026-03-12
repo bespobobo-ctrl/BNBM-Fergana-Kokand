@@ -148,21 +148,23 @@ export default function Dashboard({ user }) {
             </header>
 
             {/* AI Strategic Intelligence Card */}
-            <div className="dash-section animate-fade-in-up stagger-1 mb-8">
-                <div className="ai-insight-box glass-premium cursor-pointer !p-5" onClick={() => navigate('/ai')}>
-                    <div className="flex items-center gap-4">
-                        <div className="p-3.5 bg-accent-gradient rounded-xl text-white shadow-glow-teal flex-shrink-0">
-                            <Bot size={28} />
+            <div className="dash-section animate-fade-in-up stagger-1 mb-10">
+                <div className="ai-insight-box glass-premium cursor-pointer !p-6 border-accent/20" onClick={() => navigate('/ai')}>
+                    <div className="flex items-center gap-5">
+                        <div className="p-4 bg-accent-gradient rounded-2xl text-[#04080f] shadow-glow-teal flex-shrink-0 animate-pulse">
+                            <Bot size={32} />
                         </div>
                         <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-1.5 mb-1">
-                                <span className="text-[9px] font-black uppercase tracking-widest text-accent">AI Tahlil</span>
-                                <div className="w-1 h-1 rounded-full bg-accent animate-pulse"></div>
+                            <div className="flex items-center gap-2 mb-1.5">
+                                <span className="text-[10px] font-black uppercase tracking-widest text-accent">Strategic Intelligence</span>
+                                <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
                             </div>
-                            <h3 className="text-sm font-extrabold leading-snug truncate">Savdo <span className="text-accent">+12.4%</span> ga oshgan</h3>
-                            <p className="text-[10px] text-tertiary mt-1 truncate">Sement zaxirasini tasdiqlash tavsiya etiladi.</p>
+                            <h3 className="text-base font-black leading-tight text-white">Savdo dinamikasi kutilganidan <span className="text-accent">+15%</span> ga yuqori</h3>
+                            <p className="text-[11px] text-tertiary mt-1.5 leading-relaxed font-medium">Buxoro filialida sement zaxirasini 40 tonnaga ko'paytirish foydali bo'ladi.</p>
                         </div>
-                        <ArrowUpRight size={18} className="text-tertiary opacity-40" />
+                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5 transition-colors hover:bg-white/10">
+                            <ArrowUpRight size={20} className="text-accent" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -246,33 +248,33 @@ export default function Dashboard({ user }) {
                                     <span className="text-[8px] font-black px-2 py-1 text-tertiary hover:text-white transition-colors cursor-pointer">OYLIK</span>
                                 </div>
                             </div>
-                            <div className="glass-premium p-8 premium-glow-teal">
-                                <div className="bar-chart flex items-end justify-between px-1">
+                            <div className="glass-premium p-6 premium-glow-teal">
+                                <div className="bar-chart flex items-end justify-between px-2 h-[160px] gap-2">
                                     {weeklyChartData.map((item, index) => (
-                                        <div key={item.day} className="flex-1 flex flex-col items-center gap-2 group relative">
-                                            <div className="relative w-full flex items-end justify-center h-full">
-                                                <div className="absolute -top-10 bg-accent text-[8px] font-black px-1.5 py-0.5 rounded shadow-glow-teal z-20">
-                                                    {item.value}m
+                                        <div key={item.day} className="flex-1 flex flex-col items-center gap-3 group relative">
+                                            <div className="relative w-full flex items-end justify-center h-full group">
+                                                <div className="absolute -top-8 bg-accent text-[8px] font-black px-2 py-0.5 rounded shadow-glow-teal opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
+                                                    {item.value}M
                                                 </div>
                                                 <div
-                                                    className="w-full max-w-[14px] bg-white/5 rounded-full relative overflow-hidden"
+                                                    className="w-full max-w-[10px] bg-white/5 rounded-full relative overflow-hidden transition-all duration-500 group-hover:max-w-[14px]"
                                                     style={{ height: `${(item.value / 85) * 100}%` }}
                                                 >
                                                     <div className="absolute inset-0 bg-accent-gradient opacity-90"></div>
                                                 </div>
                                             </div>
-                                            <span className="text-[7px] font-black text-tertiary uppercase tracking-tighter">{item.day}</span>
+                                            <span className="text-[8px] font-bold text-tertiary uppercase tracking-wider">{item.day}</span>
                                         </div>
                                     ))}
                                 </div>
-                                <div className="mt-6 flex justify-between items-center pt-4 border-t border-white/5">
+                                <div className="mt-6 flex justify-between items-center pt-5 border-t border-white/5">
                                     <div className="flex flex-col">
-                                        <span className="text-[9px] font-black text-tertiary uppercase tracking-wider">Haftalik o'sish</span>
-                                        <span className="text-lg font-black text-white">458.2 mln</span>
+                                        <span className="text-[9px] font-black text-tertiary uppercase tracking-widest opacity-60">Haftalik o'sish</span>
+                                        <span className="text-xl font-black text-white">{formatMoney(458200000)}</span>
                                     </div>
                                     <div className="flex flex-col text-right">
-                                        <span className="text-[9px] font-black text-tertiary uppercase tracking-wider">Samaradorlik</span>
-                                        <span className="text-lg font-black text-accent">+14.5%</span>
+                                        <span className="text-[9px] font-black text-tertiary uppercase tracking-widest opacity-60">Samaradorlik</span>
+                                        <span className="text-xl font-black text-accent">+14.5%</span>
                                     </div>
                                 </div>
                             </div>
@@ -284,19 +286,16 @@ export default function Dashboard({ user }) {
                                 <h2 className="section-title-premium"><Building2 size={16} className="text-secondary" /> Filiallar Faoliyati</h2>
                                 <button className="text-[10px] uppercase font-black tracking-widest text-accent" onClick={() => navigate('/reports')}>Batafsil</button>
                             </div>
-                            <div className="grid gap-3">
+                            <div className="grid gap-4">
                                 {localBranches.map((branch, i) => (
-                                    <div key={branch.id} className="branch-card-elite" onClick={() => navigate('/reports')}>
-                                        <div className="flex items-center gap-3 branch-info-box">
-                                            <div className="branch-perf-dot" style={{ background: branch.color }}></div>
-                                            <div className="min-w-0">
-                                                <p className="branch-title-text">{branch.name}</p>
-                                                <p className="branch-sub-text">{branch.location}</p>
-                                            </div>
+                                    <div key={branch.id} className="branch-card-elite" style={{ color: branch.color }} onClick={() => navigate('/reports')}>
+                                        <div className="branch-info-box">
+                                            <p className="branch-title-text">{branch.name}</p>
+                                            <p className="branch-sub-text">{branch.location}</p>
                                         </div>
                                         <div className="branch-val-text">
                                             <p className="branch-val-amount">{formatMoney(branch.monthSales)}</p>
-                                            <p className="branch-val-sub">{branch.productsCount} tur</p>
+                                            <p className="branch-val-sub">{branch.productsCount} tur mahsulot</p>
                                         </div>
                                     </div>
                                 ))}
@@ -355,20 +354,26 @@ export default function Dashboard({ user }) {
                 <section className="dash-section animate-fade-in-up stagger-7">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="section-title-premium"><CreditCard size={16} className="text-teal" /> Oxirgi To'lovlar</h2>
+                        <button className="text-[10px] font-black text-accent uppercase tracking-widest">Barchasi</button>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                         {recentPayments.slice(0, 3).map((p) => (
-                            <div key={p.id} className="glass-premium !p-3 flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[10px] font-black border border-white/5">
+                            <div key={p.id} className="payment-item-elite">
+                                <div className="flex items-center gap-4">
+                                    <div className="payment-avatar">
                                         {p.sellerName.split(' ').map(n => n[0]).join('')}
                                     </div>
-                                    <div>
-                                        <p className="text-[11px] font-black">{p.sellerName}</p>
-                                        <p className="text-[9px] text-tertiary">{p.method}</p>
+                                    <div className="min-w-0">
+                                        <p className="text-[13px] font-extrabold text-white truncate">{p.sellerName}</p>
+                                        <span className={`payment-method-badge ${p.method.toLowerCase().replace("'", "-")}`}>
+                                            {p.method}
+                                        </span>
                                     </div>
                                 </div>
-                                <span className="text-xs font-black text-success">+{formatMoney(p.amount)}</span>
+                                <div className="text-right">
+                                    <p className="payment-amount">+{formatMoney(p.amount)}</p>
+                                    <p className="text-[9px] text-tertiary mt-0.5">{p.time || 'Hozir'}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
