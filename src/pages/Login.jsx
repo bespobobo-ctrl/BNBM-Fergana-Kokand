@@ -85,14 +85,18 @@ export default function Login({ onLogin }) {
 
             <div className="login-content">
                 <div className="login-logo-section animate-fade-in-up">
-                    <div className="login-logo">
-                        <div className="login-logo-icon">
-                            <HardHat size={36} strokeWidth={1.5} />
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '4px' }}>
+                        <div style={{ width: '30px', height: '30px', backgroundColor: '#e60000', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <div style={{ width: '16px', height: '16px', backgroundColor: 'white', clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <div style={{ width: '8px', height: '8px', backgroundColor: '#e60000', clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}></div>
+                            </div>
                         </div>
-                        <div className="login-logo-glow"></div>
+                        <h1 className="login-title" style={{ margin: 0, fontSize: '28px', color: 'white', fontWeight: 900 }}>
+                            BNBM <span style={{ color: '#d1d5db', fontWeight: 400 }}>CENTRAL ASIA</span>
+                        </h1>
                     </div>
-                    <h1 className="login-title">BuildTrack <span>Pro</span></h1>
-                    <p className="login-subtitle">Qurilish materiallari boshqaruv tizimi</p>
+                    <p className="login-subtitle" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.7rem' }}>O'zbekistondagi qurilish materiallari boshqaruv tizimi</p>
+
                 </div>
 
                 <form className="login-form animate-fade-in-up stagger-2" onSubmit={handleSubmit}>
@@ -140,10 +144,7 @@ export default function Login({ onLogin }) {
                             )}
                         </button>
 
-                        <button type="button" className="btn btn-secondary btn-full mt-3" onClick={handleGuestLogin} disabled={isLoading}>
-                            <UserCircle size={18} />
-                            Mehmon bo'lib kirish
-                        </button>
+
 
                         <div className="login-footer animate-fade-in stagger-4">
                             <button className="login-demo-link" onClick={() => setShowDemoModal(true)}>
@@ -186,7 +187,7 @@ export default function Login({ onLogin }) {
                     </div>
                 )}
 
-                <p className="login-version animate-fade-in stagger-4">v1.2.1 • 2026</p>
+
             </div>
         </div>
     );
