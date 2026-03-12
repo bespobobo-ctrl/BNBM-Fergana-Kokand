@@ -8,6 +8,7 @@ import {
     ShieldCheck, Sparkles, Activity, X, Check
 } from 'lucide-react';
 import { products, categories, formatMoney, formatFullMoney } from '../data/mockData';
+import { toast } from 'react-hot-toast';
 import './StorekeeperDashboard.css';
 
 export default function StorekeeperDashboard({ user }) {
@@ -81,7 +82,7 @@ export default function StorekeeperDashboard({ user }) {
     // Submit inbound request
     const handleRequestInbound = () => {
         if (!inboundForm.product || !inboundForm.amount) {
-            alert("Iltimos, barcha ma'lumotlarni to'ldiring!");
+            toast.error("Iltimos, barcha ma'lumotlarni to'ldiring!");
             return;
         }
 
@@ -101,8 +102,10 @@ export default function StorekeeperDashboard({ user }) {
             localStorage.setItem('bt_inbound', JSON.stringify([newRequest, ...list]));
             setShowInboundModal(false);
             setInboundForm({ product: '', amount: '', category: 'Sement', unit: 'kg' });
+            toast.success("Kirim so'rovi yuborildi. Rahbar tasdig'ini kuting.");
         } catch (e) {
             console.error('Inbound save error:', e);
+            toast.error("Xatolik yuz berdi!");
         }
     };
 

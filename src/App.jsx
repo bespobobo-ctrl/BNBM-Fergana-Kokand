@@ -10,6 +10,7 @@ import Management from './pages/Management';
 import Reports from './pages/Reports';
 import AIAssistant from './pages/AIAssistant';
 import BottomNav from './components/BottomNav';
+import { Toaster } from 'react-hot-toast';
 import './App.css';
 
 function App() {
@@ -21,6 +22,25 @@ function App() {
 
   return (
     <div className="app-container">
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            background: '#1f2937',
+            color: '#fff',
+            borderRadius: '12px',
+            border: '1px solid #374151',
+            fontSize: '14px',
+            fontWeight: '500'
+          },
+          success: {
+            iconTheme: {
+              primary: '#10b981',
+              secondary: '#1f2937',
+            },
+          },
+        }}
+      />
       {/* Background orbs */}
       <div className="bg-orb bg-orb-1"></div>
       <div className="bg-orb bg-orb-2"></div>

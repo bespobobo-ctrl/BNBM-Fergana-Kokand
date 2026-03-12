@@ -8,6 +8,8 @@ import {
     UserCircle, ShieldCheck, BarChart3, ShieldAlert, Search, Target, Layers,
     Info as InfoIcon
 } from 'lucide-react';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts';
+import { toast } from 'react-hot-toast';
 import {
     monthlyStats, branches, weeklyChartData, recentPayments,
     formatMoney, formatFullMoney, debts, systemErrors, adminStats,
@@ -154,7 +156,7 @@ export default function Dashboard({ user }) {
                     <div className="ai-insight-modern border-blue-500/20" onClick={() => {
                         const amount = prompt("To'langan summani kiriting (so'mda):");
                         if (!amount) return;
-                        alert("To'lov haqida Rahbarga habar yuborildi. Tasdiqlash kutilmoqda.");
+                        toast.success("To'lov haqida Rahbarga habar yuborildi. Tasdiqlash kutilmoqda.");
                     }} style={{ cursor: 'pointer', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(17, 24, 39, 1) 100%)' }}>
                         <div className="ai-icon-circle !bg-blue-500"><DollarSign size={24} /></div>
                         <div className="ai-content-modern">
@@ -177,19 +179,31 @@ export default function Dashboard({ user }) {
                         </div>
                     </div>
                     <div className="chart-container-modern">
-                        <div className="bar-chart-modern">
-                            {weeklyChartData.map((item) => (
-                                <div key={item.day} className="bar-wrapper">
-                                    <div
-                                        className="bar-fill-modern"
-                                        style={{
-                                            height: activeTab === 'haftalik' ? `${(item.value / 90) * 100}%` : `${(item.value / 120) * 100}%`,
-                                            background: activeTab === 'haftalik' ? 'var(--accent-secondary)' : 'var(--accent-primary)'
+                        <div style={{ width: '100%', height: 180, marginBottom: '24px' }}>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <BarChart data={weeklyChartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 10, fontWeight: 700 }} dy={10} />
+                                    <Tooltip
+                                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                                        content={({ active, payload }) => {
+                                            if (active && payload && payload.length) {
+                                                return (
+                                                    <div style={{ background: '#1f2937', padding: '8px 12px', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '12px' }}>
+                                                        <span style={{ color: '#9ca3af', display: 'block', marginBottom: '4px', textTransform: 'uppercase', fontSize: '10px' }}>{payload[0].payload.day}</span>
+                                                        <strong style={{ fontSize: '14px', color: activeTab === 'haftalik' ? '#3b82f6' : '#10b981' }}>{payload[0].value} mln</strong>
+                                                    </div>
+                                                );
+                                            }
+                                            return null;
                                         }}
-                                    ></div>
-                                    <span className="bar-label-modern">{item.day}</span>
-                                </div>
-                            ))}
+                                    />
+                                    <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                                        {weeklyChartData.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={activeTab === 'haftalik' ? '#3b82f6' : '#10b981'} />
+                                        ))}
+                                    </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
                         </div>
                         <div className="chart-footer-modern">
                             <div className="chart-stats-info">

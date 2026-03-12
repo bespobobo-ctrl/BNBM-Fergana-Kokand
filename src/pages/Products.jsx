@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Search, Filter, Plus, ChevronRight, Package, Info, ArrowLeft, MoreVertical, Box, PlusCircle } from 'lucide-react';
 import { products as mockProducts, categories, formatFullMoney } from '../data/mockData';
+import { toast } from 'react-hot-toast';
 import './Products.css';
 
 export default function Products({ user }) {
@@ -16,7 +17,7 @@ export default function Products({ user }) {
 
     const handleRequestInbound = () => {
         if (!inboundForm.product || !inboundForm.amount) {
-            alert("Iltimos, barcha ma'lumotlarni to'ldiring!");
+            toast.error("Iltimos, barcha ma'lumotlarni to'ldiring!");
             return;
         }
 
@@ -36,7 +37,7 @@ export default function Products({ user }) {
         };
 
         localStorage.setItem('bt_inbound', JSON.stringify([newRequest, ...list]));
-        alert("Prihot so'rovi yuborildi. Rahbar tomonidan tasdiqlanishi va narx belgilanishini kuting.");
+        toast.success("Prihot so'rovi yuborildi. Rahbar tomonidan tasdiqlanishi va narx belgilanishini kuting.");
         setShowInboundModal(false);
         setInboundForm({ product: '', amount: '', category: 'Materiallar', unit: 'kg' });
     };

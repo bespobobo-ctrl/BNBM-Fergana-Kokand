@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Users, DollarSign, CheckSquare, ClipboardList, Activity, Plus, Trash2, Edit, CheckCircle2, XCircle, Upload, MessageCircle, ArrowRight, ShieldAlert, Newspaper, Zap, Bot, Settings2, BarChart3, RefreshCw, ShieldCheck, Phone, Send, MessageSquare, Camera, Printer, FileText, Check, Clock, Box, Archive, Building2, MapPin, TrendingUp, ChevronRight, UserCircle, ShieldAlert as ShieldAlertIcon } from 'lucide-react';
 import { sellers, products, creditRequests, branches, tasks, auditLogs, formatFullMoney, formatMoney, users, systemErrors, appUpdates, aiTelemetry } from '../data/mockData';
+import { toast } from 'react-hot-toast';
 import './Management.css';
 
 export default function Management({ user }) {
@@ -142,7 +143,7 @@ export default function Management({ user }) {
 
     const handleFixError = (id) => {
         setLocalErrors(prev => prev.map(err => err.id === id ? { ...err, status: 'Fixed', severity: 'low' } : err));
-        alert("Xatolik bartaraf etildi!");
+        toast.success("Xatolik bartaraf etildi!");
     };
 
     const handleAddDirector = () => {
@@ -272,7 +273,7 @@ export default function Management({ user }) {
 
         setShowPermitModal(false);
         setShowApprovalModal(false);
-        alert(`${selectedRequest.client} uchun ${permitForm.permitNumber} raqamli maxsus ruhsatnoma rasmiylashtirildi!`);
+        toast.success(`${selectedRequest.client} uchun ${permitForm.permitNumber} raqamli maxsus ruhsatnoma rasmiylashtirildi!`);
     };
 
     const handleConfirmCashSale = (id) => {
@@ -293,7 +294,7 @@ export default function Management({ user }) {
         };
 
         setLocalCashSales([newSale, ...localCashSales]);
-        alert("To'lov haqida Rahbarga habar yuborildi. Tasdiqlash kutilmoqda.");
+        toast.success("To'lov haqida Rahbarga xabar yuborildi. Tasdiqlash kutilmoqda.");
     };
 
     const handleAddStorekeeper = () => {
@@ -342,7 +343,7 @@ export default function Management({ user }) {
 
     const handleApproveInbound = () => {
         if (!newPrice) {
-            alert("Iltimos, mahsulot uchun narx belgilang!");
+            toast.error("Iltimos, mahsulot uchun narx belgilang!");
             return;
         }
 
@@ -673,7 +674,7 @@ export default function Management({ user }) {
                             <h3 className="text-sm font-bold mb-4 flex items-center gap-2"><Settings2 size={16} /> AI Nosozliklarni bartaraf qilish</h3>
                             <div className="glass-card p-4">
                                 <p className="text-xs text-tertiary mb-3">AI yordamchi ishlashida muammo bormi? Quyidagi tugma orqali algoritmlarni reset qilib, qayta sozlashingiz mumkin.</p>
-                                <button className="btn btn-primary btn-full" onClick={() => alert("AI Algoritmlari qayta sozlandi va xatoliklar bartaraf etildi!")}>
+                                <button className="btn btn-primary btn-full" onClick={() => toast.success("AI Algoritmlari qayta sozlandi va xatoliklar bartaraf etildi!")}>
                                     AI ni to'g'irlash (Fix AI)
                                 </button>
                             </div>
@@ -804,7 +805,7 @@ export default function Management({ user }) {
                                     </div>
                                     <div className="price-action">
                                         <div className="price-value">{formatFullMoney(p.price)}</div>
-                                        <button className="icon-btn sm" onClick={() => alert("Narx tahrirlash")}><Edit size={14} /></button>
+                                        <button className="icon-btn sm" onClick={() => toast.success("Narx tahrirlash qismi ochildi")}><Edit size={14} /></button>
                                     </div>
                                 </div>
                             ))}
@@ -839,7 +840,7 @@ export default function Management({ user }) {
                                                     setCurrentReceipt(permit);
                                                     setShowReceipt(true);
                                                 } else {
-                                                    alert("Chek topilmadi (arxivdan qidirib ko'ring)");
+                                                    toast.error("Chek topilmadi (arxivdan qidirib ko'ring)");
                                                 }
                                             }}>Chekni ko'rish</button>
                                         </div>
@@ -1067,10 +1068,10 @@ export default function Management({ user }) {
                         <div className="modal-actions mt-4">
                             <button className="btn btn-primary btn-full" onClick={() => {
                                 if (!proofFile) {
-                                    alert("Iltimos, avval isbot (shartnoma) yuklang yoki Maxsus Ruhsatnoma tugmasini bosing!");
+                                    toast.error("Iltimos, avval isbot (shartnoma) yuklang yoki Maxsus Ruhsatnoma tugmasini bosing!");
                                     return;
                                 }
-                                alert("Nasiya tasdiqlandi!");
+                                toast.success("Nasiya tasdiqlandi!");
                                 setShowApprovalModal(false);
                             }}>
                                 Oddiy Tasdiqlash
