@@ -108,87 +108,73 @@ export default function Dashboard({ user }) {
             </header>
 
             {/* AI Insight Section */}
-            <div className="mb-8 relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col md:flex-row gap-5 shadow-2xl overflow-hidden cursor-pointer" onClick={() => navigate('/ai')}>
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center flex-shrink-0 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-                        <Bot size={28} className="text-white drop-shadow-md" />
-                    </div>
-                    <div className="flex-1 z-10">
-                        <div className="flex items-center gap-3 mb-2">
-                            <h4 className="text-xs font-black text-emerald-400 uppercase tracking-widest">AI Tahlil • Bugun</h4>
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                            </span>
+            <div className="mb-8">
+                <div className="ai-insight-premium" onClick={() => navigate('/ai')}>
+                    <div className="ai-insight-bg-glow"></div>
+                    <div className="ai-insight-content">
+                        <div className="ai-insight-icon-wrap">
+                            <Bot size={28} className="ai-insight-icon" />
                         </div>
-                        <p className="text-[#e2e8f0] font-medium leading-relaxed text-[15px]">Savdo dinamikasi kutilganidan <span className="text-emerald-400 font-bold">15.4% yuqori</span>. Mahsulot zaxirasini <span className="bg-white/10 px-2 py-1 rounded text-white">{formatMoney(45000000)}</span> ga oshirish tavsiya etiladi.</p>
+                        <div className="ai-insight-text-area">
+                            <div className="ai-insight-header">
+                                <h4>AI Tahlil • Bugun</h4>
+                                <div className="pulse-dot"></div>
+                            </div>
+                            <p>Savdo dinamikasi kutilganidan <span>15.4% yuqori</span>. Mahsulot zaxirasini <span className="highlight-badge">{formatMoney(45000000)}</span> ga oshirish tavsiya etiladi.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             {/* Core Metrics Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="group relative" onClick={() => navigate('/reports')}>
-                    <div className="absolute inset-0 bg-blue-500/5 rounded-2xl blur-lg group-hover:bg-blue-500/10 transition"></div>
-                    <div className="relative bg-gradient-to-b from-[#1e293b]/90 to-[#0f172a] backdrop-blur-md border border-white/5 group-hover:border-blue-500/30 rounded-2xl p-5 hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Umumiy Sotuv</span>
-                            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <Search size={16} className="text-blue-400" />
-                            </div>
+            <div className="kpi-grid-premium">
+                <div className="kpi-card-premium" onClick={() => navigate('/reports')}>
+                    <div className="kpi-card-inner">
+                        <div className="kpi-card-header">
+                            <span className="kpi-card-label">Umumiy Sotuv</span>
+                            <div className="kpi-icon-box blue"><Search size={16} /></div>
                         </div>
-                        <span className="block text-xl sm:text-2xl font-black text-white tracking-tight">{formatMoney(monthlyStats.totalSales)}</span>
-                        <div className="mt-2 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-blue-500 rounded-full w-[70%]"></div>
+                        <span className="kpi-card-value text-white">{formatMoney(monthlyStats.totalSales)}</span>
+                        <div className="kpi-progress">
+                            <div className="kpi-progress-bar blue" style={{ width: '70%' }}></div>
                         </div>
                     </div>
                 </div>
 
-                <div className="group relative" onClick={() => navigate('/reports')}>
-                    <div className="absolute inset-0 bg-emerald-500/5 rounded-2xl blur-lg group-hover:bg-emerald-500/10 transition"></div>
-                    <div className="relative bg-gradient-to-b from-[#1e293b]/90 to-[#0f172a] backdrop-blur-md border border-white/5 group-hover:border-emerald-500/30 rounded-2xl p-5 hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Bugungi Savdo</span>
-                            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <Target size={16} className="text-emerald-400" />
-                            </div>
+                <div className="kpi-card-premium" onClick={() => navigate('/reports')}>
+                    <div className="kpi-card-inner">
+                        <div className="kpi-card-header">
+                            <span className="kpi-card-label">Bugungi Savdo</span>
+                            <div className="kpi-icon-box emerald"><Target size={16} /></div>
                         </div>
-                        <span className="block text-xl sm:text-2xl font-black text-white tracking-tight">{formatMoney(monthlyStats.todaySales)}</span>
-                        <div className="mt-2 flex items-center gap-1.5">
-                            <TrendingUp size={12} className="text-emerald-400" />
-                            <span className="text-[10px] font-bold text-emerald-400">+12% kechagidan</span>
+                        <span className="kpi-card-value text-white">{formatMoney(monthlyStats.todaySales)}</span>
+                        <div className="kpi-trend emerald">
+                            <TrendingUp size={12} />
+                            <span>+12% kechagidan</span>
                         </div>
                     </div>
                 </div>
 
-                <div className="group relative" onClick={() => navigate('/debts')}>
-                    <div className="absolute inset-0 bg-orange-500/5 rounded-2xl blur-lg group-hover:bg-orange-500/10 transition"></div>
-                    <div className="relative bg-gradient-to-b from-[#1e293b]/90 to-[#0f172a] backdrop-blur-md border border-white/5 group-hover:border-orange-500/30 rounded-2xl p-5 hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Jami Qarzlar</span>
-                            <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <Layers size={16} className="text-orange-400" />
-                            </div>
+                <div className="kpi-card-premium" onClick={() => navigate('/debts')}>
+                    <div className="kpi-card-inner">
+                        <div className="kpi-card-header">
+                            <span className="kpi-card-label">Jami Qarzlar</span>
+                            <div className="kpi-icon-box orange"><Layers size={16} /></div>
                         </div>
-                        <span className="block text-xl sm:text-2xl font-black text-white tracking-tight">{formatMoney(monthlyStats.totalDebt)}</span>
+                        <span className="kpi-card-value text-white">{formatMoney(monthlyStats.totalDebt)}</span>
                     </div>
                 </div>
 
-                <div className="group relative" onClick={() => navigate('/debts')}>
-                    <div className="absolute inset-0 bg-red-500/5 rounded-2xl blur-lg group-hover:bg-red-500/10 transition"></div>
-                    <div className="relative bg-gradient-to-b from-[#1e293b]/90 to-[#0f172a] backdrop-blur-md border border-white/5 group-hover:border-red-500/30 rounded-2xl p-5 hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Muddati O'tgan</span>
-                            <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <ShieldAlert size={16} className="text-red-400" />
-                            </div>
+                <div className="kpi-card-premium" onClick={() => navigate('/debts')}>
+                    <div className="kpi-card-inner">
+                        <div className="kpi-card-header">
+                            <span className="kpi-card-label">Muddati O'tgan</span>
+                            <div className="kpi-icon-box red"><ShieldAlert size={16} /></div>
                         </div>
-                        <span className="block text-xl sm:text-2xl font-black text-red-400 tracking-tight">{formatMoney(monthlyStats.overdueDebt)}</span>
-                        <div className="mt-2 flex items-center gap-1.5">
-                            <AlertTriangle size={12} className="text-red-400" />
-                            <span className="text-[10px] font-bold text-red-400 uppercase tracking-wide">Qattiq nazorat</span>
+                        <span className="kpi-card-value text-red">{formatMoney(monthlyStats.overdueDebt)}</span>
+                        <div className="kpi-trend red">
+                            <AlertTriangle size={12} />
+                            <span>Qattiq nazorat</span>
                         </div>
                     </div>
                 </div>
